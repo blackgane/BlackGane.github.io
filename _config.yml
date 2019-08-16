@@ -98,3 +98,8 @@ live2d:
     height: 200
   mobile:
     show: false
+
+backup:
+    type: git
+    repository:
+       github: git@github.com:blackgane/BlackGane.github.io.git,MyHexo
