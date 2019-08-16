@@ -103,4 +103,4 @@ backup:
     type: git
     theme: icarus
     repository:
-       github: https://github.com/blackgane/BlackGane.github.io.git,MyHexo
+       github: git@github.com:blackgane/BlackGane.github.io.git,MyHexo
