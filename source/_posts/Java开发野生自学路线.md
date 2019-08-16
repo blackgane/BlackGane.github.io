@@ -1,6 +1,8 @@
 ---
 title: Java开发野生自学路线
 date: 2019-08-15 16:45:34
+thumbnail: /images/avatar.jpg
+categories: JAVA
 tags: JAVA
 ---
 
