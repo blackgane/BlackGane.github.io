@@ -101,5 +101,6 @@ live2d:
 
 backup:
     type: git
+    theme: icarus
     repository:
        github: git@github.com:blackgane/BlackGane.github.io.git,MyHexo
