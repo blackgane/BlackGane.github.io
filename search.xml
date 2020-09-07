@@ -4,13 +4,154 @@
   
     
     <entry>
-      <title>Hello World</title>
-      <link href="/2020/09/03/hello-world/"/>
-      <url>/2020/09/03/hello-world/</url>
+      <title>英语音标</title>
+      <link href="/2020/09/06/DJ%E9%9F%B3%E6%A0%87/"/>
+      <url>/2020/09/06/DJ%E9%9F%B3%E6%A0%87/</url>
       
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+        <content type="html"><![CDATA[<ol><li><a href="https://www.yingyutu.com/dj">DJ音标</a></li><li><a href="https://www.yingyutu.com/kk">KK音标</a></li></ol>]]></content>
       
       
+      <categories>
+          
+          <category> English </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> English </tag>
+            
+            <tag> 音标 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>学英语准备工作</title>
+      <link href="/2020/09/06/%E5%AD%A6%E8%8B%B1%E8%AF%AD%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/"/>
+      <url>/2020/09/06/%E5%AD%A6%E8%8B%B1%E8%AF%AD%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/</url>
+      
+        <content type="html"><![CDATA[<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ol><li><a href="http://testyourvocab.com/">词汇量检测</a></li></ol><h2 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h2><h3 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h3><ol><li><p><a href="https://github.com/yujiangshui/A-Programmers-Guide-to-English">A-Programmers-Guide-to-English</a></p></li><li><p><a href="https://github.com/byoungd/English-level-up-tips-for-Chinese">English-level-up-tips-for-Chinese</a></p></li></ol><h3 id="实用Chrome插件"><a href="#实用Chrome插件" class="headerlink" title="实用Chrome插件"></a>实用Chrome插件</h3><ol><li><a href="https://chrome.google.com/webstore/detail/cambridge-dictionary/kjmjndmenaoihimmojhdabgfjefonmja">Cambridge Dictionary</a>：对准单词右击就打开 Cambridge Dictionary 看到对应的词义，用以重度查询</li><li><a href="https://chrome.google.com/webstore/detail/google-dictionary-by-goog/mgijmajocgfcbeboacabfgobmjgjcoja">Google Dictionary (by Google)</a>：双击即可弹出非常简单的弹窗，附带一个英文发音和简短的英文释义，用以轻度查询</li><li><a href="https://chrome.google.com/webstore/detail/grammarly-for-chrome/kbfnbcaeplbcioakkpcpgfkobkghlhen">Grammarly</a>：语法检测。</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> English </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> English </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Java学习仓库</title>
+      <link href="/2020/09/06/Java%E5%AD%A6%E4%B9%A0%E4%BB%93%E5%BA%93/"/>
+      <url>/2020/09/06/Java%E5%AD%A6%E4%B9%A0%E4%BB%93%E5%BA%93/</url>
+      
+        <content type="html"><![CDATA[<h2 id="中国科学技术大学课程资源"><a href="#中国科学技术大学课程资源" class="headerlink" title="中国科学技术大学课程资源"></a>中国科学技术大学课程资源</h2><p><a href="https://github.com/USTC-Resource/USTC-Course">仓库地址</a></p><h2 id="浙江大学课程攻略共享计划"><a href="#浙江大学课程攻略共享计划" class="headerlink" title="浙江大学课程攻略共享计划"></a>浙江大学课程攻略共享计划</h2><p><a href="https://github.com/QSCTech/zju-icicles">仓库地址</a></p><h2 id="现代-JavaScript-教程"><a href="#现代-JavaScript-教程" class="headerlink" title="现代 JavaScript 教程"></a>现代 JavaScript 教程</h2><p>以最新的 JavaScript 标准为基准。通过简单但足够详细的内容，为你讲解从基础到高阶的 JavaScript 相关知识，</p><p>当前项目已被翻译为多语言。</p><p><a href="https://github.com/javascript-tutorial/zh.javascript.info">仓库地址</a></p><h2 id="JavaScript-算法与数据结构"><a href="#JavaScript-算法与数据结构" class="headerlink" title="JavaScript 算法与数据结构"></a>JavaScript 算法与数据结构</h2><p>本仓库包含了多种基于 JavaScript 的算法与数据结构，每种算法和数据结构都有自己的 README，包含相关说明和链接，同样的也被翻译为多语言</p><p><a href="https://github.com/trekhleb/javascript-algorithms/blob/master/README.zh-CN.md">仓库地址</a></p><h2 id="Nodejs-Roadmap"><a href="#Nodejs-Roadmap" class="headerlink" title="Nodejs-Roadmap"></a>Nodejs-Roadmap</h2><p>这是一个侧重于 Node.js 服务端的开发指南，如果你想进一步学习nodejs的话可以尝试一下</p><p><a href="https://github.com/Q-Angelo/Nodejs-Roadmap">仓库地址</a></p><h2 id="FE-Interview-Questions"><a href="#FE-Interview-Questions" class="headerlink" title="FE-Interview-Questions"></a>FE-Interview-Questions</h2><p>前端面试常考问题整理，按模块知识点分类</p><p><a href="https://blog.poetries.top/FE-Interview-Questions/">文档页面 </a></p><p><a href="https://github.com/poetries/FE-Interview-Questions">仓库地址</a></p><h2 id="JavaScript-进阶问题列表"><a href="#JavaScript-进阶问题列表" class="headerlink" title="JavaScript 进阶问题列表"></a>JavaScript 进阶问题列表</h2><p>从基础到进阶，测试你有多了解 JavaScript，刷新你的知识，或者帮助你的 coding<br>面试！作者每周都会在这个仓库下更新的问题，同样的也被翻译为多语言</p><p><a href="https://github.com/lydiahallie/javascript-questions/blob/master/zh-CN/README-zh_CN.md">仓库地址</a></p><h2 id="中国科学技术大学课程资源-1"><a href="#中国科学技术大学课程资源-1" class="headerlink" title="中国科学技术大学课程资源"></a>中国科学技术大学课程资源</h2><p><a href="https://github.com/USTC-Resource/USTC-Course">仓库地址</a></p><h2 id="浙江大学课程攻略共享计划-1"><a href="#浙江大学课程攻略共享计划-1" class="headerlink" title="浙江大学课程攻略共享计划"></a>浙江大学课程攻略共享计划</h2><p><a href="https://github.com/QSCTech/zju-icicles">仓库地址</a></p><h2 id="awesome-java-books"><a href="#awesome-java-books" class="headerlink" title="awesome-java-books"></a>awesome-java-books</h2><p>如果你想知道学习应该看什么书籍，关注这个仓库就对了，作者把不同阶段不同知识点的书籍都列了出来</p><p><a href="https://github.com/sorenduan/awesome-java-books">仓库地址</a></p><h2 id="OnJava8"><a href="#OnJava8" class="headerlink" title="OnJava8"></a>OnJava8</h2><p>《On Java 8》中文版，又名《Java编程思想》 第5版 ，一本可以比较系统的学习Java基础的书籍，最重要的是，它是完全免费的</p><p><a href="https://github.com/LingCoder/OnJava8">仓库地址</a></p><p>下面是两个工具类教程</p><h2 id="IntelliJ-IDEA-Tutorial"><a href="#IntelliJ-IDEA-Tutorial" class="headerlink" title="IntelliJ-IDEA-Tutorial"></a>IntelliJ-IDEA-Tutorial</h2><p>初学者对IDEA不太了解的可以看看这个仓库，这也是很多培训班IDEA教程的素材来源</p><p><a href="https://github.com/judasn/IntelliJ-IDEA-Tutorial">仓库地址</a></p><h2 id="Linux-Tutorial"><a href="#Linux-Tutorial" class="headerlink" title="Linux-Tutorial"></a>Linux-Tutorial</h2><p>想要简单的学习一下linux操作可以看看这个仓库，安装和简单的使用足够了</p><p><a href="https://github.com/judasn/Linux-Tutorial">仓库地址</a></p><h2 id="advanced-java"><a href="#advanced-java" class="headerlink" title="advanced-java"></a>advanced-java</h2><p>互联网 Java 工程师进阶知识完全扫盲：涵盖高并发、分布式、高可用、微服务、海量数据处理等领域知识，后端同学必看，前端同学也可学习</p><p><a href="https://github.com/doocs/advanced-java">仓库地址</a></p><h2 id="java-design-patterns"><a href="#java-design-patterns" class="headerlink" title="java-design-patterns"></a>java-design-patterns</h2><p>学习Java设计模式必看，对新人不太友好的地方就是它是英文的</p><p><a href="https://github.com/iluwatar/java-design-patterns">仓库地址</a></p><h2 id="The-Algorithms-Java"><a href="#The-Algorithms-Java" class="headerlink" title="The Algorithms - Java"></a>The Algorithms - Java</h2><p>使用Java语言的算法教程，同样它也是英文的</p><p><a href="https://github.com/TheAlgorithms/Java">仓库地址</a></p><p>然后是几个关于spring学习的仓库</p><h2 id="spring-boot-demo"><a href="#spring-boot-demo" class="headerlink" title="spring-boot-demo"></a>spring-boot-demo</h2><p>spring boot demo 是一个用来深度学习并实战 spring boot 的项目，目前总共包含 65 个集成demo</p><p><a href="https://github.com/xkcoding/spring-boot-demo">仓库地址</a></p><h2 id="SpringCloudLearning"><a href="#SpringCloudLearning" class="headerlink" title="SpringCloudLearning"></a>SpringCloudLearning</h2><p>方志朋史上最简单的Spring Cloud教程源码</p><p><a href="https://github.com/forezp/SpringCloudLearning">仓库地址</a></p><h2 id="SpringCloud-Learning"><a href="#SpringCloud-Learning" class="headerlink" title="SpringCloud-Learning"></a>SpringCloud-Learning</h2><p>Spring Cloud基础教程，持续连载更新中</p><p><a href="https://github.com/dyc87112/SpringCloud-Learning">仓库地址</a></p><h2 id="mall-learning"><a href="#mall-learning" class="headerlink" title="mall-learning"></a>mall-learning</h2><p>第三个项目是 mall-learning ，这是拥有 35k+star 的mall项目搭配的学习教程，值得推荐</p><p><a href="https://github.com/macrozheng/mall-learning">仓库地址</a></p><p>然后是面试的项目，这类的项目很多，推荐两个最火的</p><h2 id="JavaGuide"><a href="#JavaGuide" class="headerlink" title="JavaGuide"></a>JavaGuide</h2><p><a href="https://github.com/Snailclimb/JavaGuide">仓库地址</a></p><p>「Java学习+面试指南」一份涵盖大部分Java程序员所需要掌握的核心知识,我找工作的时候这个仓库帮助我不要太多，guide哥牛逼</p><h2 id="CS-Notes"><a href="#CS-Notes" class="headerlink" title="CS-Notes"></a>CS-Notes</h2><p><a href="https://github.com/CyC2018/CS-Notes">仓库地址</a></p><p>技术面试必备基础知识、Leetcode、计算机操作系统、计算机网络、系统设计、Java、Python、C++都有，值得收藏</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 学习路线 </tag>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>DevOps Developer - Roadmaps</title>
+      <link href="/2019/09/23/DevOps%20Developer%20-%20Roadmaps/"/>
+      <url>/2019/09/23/DevOps%20Developer%20-%20Roadmaps/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>转自<a href="https://roadmap.sh/devops">https://roadmap.sh/devops</a></p></blockquote><p><img src= "/img/loading.gif" data-lazy-src="https://roadmap.sh/assets/img/roadmaps/devops-transparent.png" alt="DevOps Developer"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Roadmaps </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> DevOps </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Backend Developer - Roadmaps</title>
+      <link href="/2019/09/23/Backend%20Developer%20-%20Roadmaps/"/>
+      <url>/2019/09/23/Backend%20Developer%20-%20Roadmaps/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>转自<a href="https://roadmap.sh/backend">https://roadmap.sh/backend</a></p></blockquote><p><img src= "/img/loading.gif" data-lazy-src="https://roadmap.sh/assets/img/roadmaps/backend-transparent.png" alt="Backend Developer"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Roadmaps </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Backend </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Frontend Developer - Roadmaps</title>
+      <link href="/2019/09/23/Frontend%20Developer%20-%20Roadmaps/"/>
+      <url>/2019/09/23/Frontend%20Developer%20-%20Roadmaps/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>转自<a href="https://roadmap.sh/frontend">https://roadmap.sh/frontend</a></p></blockquote><p><img src= "/img/loading.gif" data-lazy-src="https://roadmap.sh/assets/img/roadmaps/frontend-transparent.png" alt="Frontend Developer"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Roadmaps </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Frontend </tag>
+            
+        </tags>
       
     </entry>
     
