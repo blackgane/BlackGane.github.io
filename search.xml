@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Linux主机规划与磁盘分区</title>
+      <link href="/2020/09/07/Java%E5%AD%A6%E4%B9%A0%E4%BB%93%E5%BA%93%20copy/"/>
+      <url>/2020/09/07/Java%E5%AD%A6%E4%B9%A0%E4%BB%93%E5%BA%93%20copy/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>在Linux系统中，每个设备都被当成一个文件来对待</p></blockquote><table><thead><tr><th>设备</th><th>设备在Linux内的文件名</th></tr></thead><tbody><tr><td>SCSI/SATA/USB硬盘机</td><td>/dev/sd[a-p]</td></tr><tr><td>USB闪存盘</td><td>/dev/sd[a-p] （与SATA相同）</td></tr><tr><td>VirtI/O界面</td><td>/dev/vd[a-p] （用于虚拟机内）</td></tr><tr><td>软盘机</td><td>/dev/fd[0-7]</td></tr><tr><td>打印机</td><td>/dev/lp[0-2] （25针打印机） /dev/usb/lp[0-15] （USB 接口）</td></tr><tr><td>鼠标</td><td>/dev/input/mouse[0-15] （通用） /dev/psaux （PS/2界面）/dev/mouse （当前鼠标）</td></tr><tr><td>CDROM/DVDROM</td><td>/dev/scd[0-1] （通用） /dev/sr[0-1] （通用，CentOS 较常见）/dev/cdrom （当前 CDROM）</td></tr><tr><td>磁带机</td><td>/dev/ht0 （IDE 界面） /dev/st0 （SATA/SCSI界面） /dev/tape（当前磁带）</td></tr><tr><td>IDE硬盘机</td><td>/dev/hd[a-d] （旧式系统才有）</td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 磁盘 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>英语音标</title>
       <link href="/2020/09/06/DJ%E9%9F%B3%E6%A0%87/"/>
       <url>/2020/09/06/DJ%E9%9F%B3%E6%A0%87/</url>
