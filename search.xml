@@ -4,6 +4,83 @@
   
     
     <entry>
+      <title>Linux 的文件权限与目录配置</title>
+      <link href="/2020/09/10/Linux%20%E7%9A%84%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E4%B8%8E%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE/"/>
+      <url>/2020/09/10/Linux%20%E7%9A%84%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E4%B8%8E%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>Linux一般将文件可存取的身份分为三个类别，分别是 owner/group/others，且三种身份各有 read/write/execute 等权限。</p></blockquote><h2 id="使用者与群组"><a href="#使用者与群组" class="headerlink" title="使用者与群组"></a>使用者与群组</h2><h3 id="文件拥有者"><a href="#文件拥有者" class="headerlink" title="文件拥有者"></a>文件拥有者</h3><p>由于Linux是个多用户多任务的系统, 所以可以设置为只文件拥有者才可查看或修改，其他人无法查看修改</p><h3 id="群组概念"><a href="#群组概念" class="headerlink" title="群组概念"></a>群组概念</h3><p>以团队形式来共享，分割可查看，修改的权限。</p><h3 id="其他人"><a href="#其他人" class="headerlink" title="其他人"></a>其他人</h3><p>既不是文件拥有者，又不是群组里的人，root除外。</p><h3 id="Linux-使用者身份与群组记录的文件"><a href="#Linux-使用者身份与群组记录的文件" class="headerlink" title="Linux 使用者身份与群组记录的文件"></a>Linux 使用者身份与群组记录的文件</h3><p>默认的情况下：</p><ol><li>所有的系统上的帐号与一般身份使用者，还有root， 记录在 /etc/passwd</li><li>个人的密码则是记录在 /etc/shadow </li><li>Linux所有的群组名称都纪录在 /etc/group</li></ol><h2 id="Linux-文件权限概念"><a href="#Linux-文件权限概念" class="headerlink" title="Linux 文件权限概念"></a>Linux 文件权限概念</h2><h3 id="Linux文件属性"><a href="#Linux文件属性" class="headerlink" title="Linux文件属性"></a>Linux文件属性</h3><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/blackgane/cdn_article@master/article_cdn/ls.jpg" alt="ls -al"></p><ol><li>第一栏代表这个文件的类型与权限（permission）</li></ol><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/blackgane/cdn_article@master/article_cdn/permission.jpg" alt="文件的类型与权限之内容"></p><pre><code>1. 第一个字符代表这个文件是“目录、文件或链接文件等等”：    * 当为[ d ]则是目录，例如上表文件名为“.config”的那一行；    * 当为[ - ]则是文件，例如上表文件名为“initial-setup-ks.cfg”那一行；    * 若是[ l ]则表示为链接文件（link file）；    * 若是[ b ]则表示为设备文件里面的可供储存的周边设备（可随机存取设备）；    * 若是[ c ]则表示为设备文件里面的序列埠设备，例如键盘、鼠标（一次性读取设备）。2. 接下来的字符中，以三个为一组，且均为“rwx” 的三个参数的组合。    * [ r ]代表可读（read）、[ w ]代表可写（write）、[ x ]代表可执行（execute）    * 要注意的是，这三个权限的位置不会改变，如果没有权限，就会出现减号[ - ]而已。    * 第一组为“文件拥有者可具备的权限”，以“initial-setup-ks.cfg”那个文件为例， 该文件的拥有者可以读写，但不可执行；    * 第二组为“加入此群组之帐号的权限”；    * 第三组为“非本人且没有加入本群组之其他帐号的权限”。</code></pre><ol start="2"><li>第二栏表示有多少文件名链接到此节点（i-node）</li><li>第三栏表示这个文件（或目录）的“拥有者帐号”</li><li>第四栏表示这个文件的所属群组</li><li>第五栏为这个文件的容量大小，默认单位为Bytes；</li><li>第六栏为这个文件的创建日期或者是最近的修改日期</li><li>第七栏为这个文件的文件名</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 文件权限 </tag>
+            
+            <tag> 目录配置 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>man page &amp; info page</title>
+      <link href="/2020/09/10/man%20page%20&amp;%20info%20page/"/>
+      <url>/2020/09/10/man%20page%20&amp;%20info%20page/</url>
+      
+        <content type="html"><![CDATA[<h2 id="man-page"><a href="#man-page" class="headerlink" title="man page"></a>man page</h2><h3 id="常见数字"><a href="#常见数字" class="headerlink" title="常见数字"></a>常见数字</h3><table><thead><tr><th>代号</th><th>代表内容</th></tr></thead><tbody><tr><td>1</td><td>使用者在shell环境中可以操作的指令或可可执行文件</td></tr><tr><td>2</td><td>系统核心可调用的函数与工具等</td></tr><tr><td>3</td><td>一些常用的函数（function）与函数库（library），大部分为C的函数库（libc）</td></tr><tr><td>4</td><td>设备文件的说明，通常在/dev下的文件</td></tr><tr><td>5</td><td>配置文件或者是某些文件的格式</td></tr><tr><td>6</td><td>游戏（games）</td></tr><tr><td>7</td><td>惯例与协定等，例如Linux文件系统、网络协定、ASCII code等等的说明</td></tr><tr><td>8</td><td>系统管理员可用的管理指令</td></tr><tr><td>9</td><td>跟kernel有关的文件</td></tr></tbody></table><ul><li>上述的表格内容可以使用“man man”来更详细的取得说明。</li></ul><h3 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h3><table><thead><tr><th>代号</th><th>内容说明</th></tr></thead><tbody><tr><td>NAME</td><td>简短的指令、数据名称说明</td></tr><tr><td>SYNOPSIS</td><td>简短的指令下达语法（syntax）简介</td></tr><tr><td>DESCRIPTION</td><td>较为完整的说明，这部分最好仔细看看！</td></tr><tr><td>OPTIONS</td><td>针对 SYNOPSIS 部分中，有列举的所有可用的选项说明</td></tr><tr><td>COMMANDS</td><td>当这个程序（软件）在执行的时候，可以在此程序（软件）中下达的指令</td></tr><tr><td>FILES</td><td>这个程序或数据所使用或参考或链接到的某些文件</td></tr><tr><td>SEE ALSO</td><td>可以参考的，跟这个指令或数据有相关的其他说明！</td></tr><tr><td>EXAMPLE</td><td>一些可以参考的范例</td></tr></tbody></table><h3 id="查看步骤"><a href="#查看步骤" class="headerlink" title="查看步骤"></a>查看步骤</h3><ol><li>先察看NAME的项目，约略看一下这个数据的意思；</li><li>再详看一下DESCRIPTION，这个部分会提到很多相关的数据与使用时机，从这个地方可<br>以学到很多小细节呢；</li><li>而如果这个指令其实很熟悉了（例如上面的date），那么鸟哥主要就是查询关于OPTIONS的部分了！ 可以知道每个选项的意义，这样就可以下达比较细部的指令内容呢！</li><li>最后，鸟哥会再看一下，跟这个数据有关的还有哪些东西可以使用的？举例来说，上面的SEE ALSO就告知我们还可以利用“info coreutils date”来进一步查阅数据；</li><li>某些说明内容还会列举有关的文件（FILES 部分）来提供我们参考！这些都是很有帮助的！</li></ol><h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><table><thead><tr><th>按键</th><th>进行工作</th></tr></thead><tbody><tr><td>空白键</td><td>向下翻一页</td></tr><tr><td>[PageDown]</td><td>向下翻一页</td></tr><tr><td>[PageUp]</td><td>向上翻一页</td></tr><tr><td>[Home]</td><td>去到第一页</td></tr><tr><td>[End]</td><td>去到最后一页</td></tr><tr><td>/string</td><td>向“下”搜寻 string 这个字串</td></tr><tr><td>?string</td><td>向“上”搜寻 string 这个字串</td></tr><tr><td>n, N</td><td>利用 / 或 ? 来搜寻字串时，可以用 n 来继续下一个搜寻 （不论是 / 或 ?），可以利用 N 来进行“反向”搜寻。</td></tr><tr><td>q</td><td>结束这次的 man page</td></tr></tbody></table><h3 id="特殊查询"><a href="#特殊查询" class="headerlink" title="特殊查询"></a>特殊查询</h3><ol><li>查询“man”这个指令有关的说明文档 -f</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[blackgane@study ~]$ man -f man</span><br><span class="line">man （1） - an interface to the on-line reference manuals</span><br><span class="line">man （1p） - display system documentation</span><br><span class="line">man （7） - macros to format man pages</span><br></pre></td></tr></table></figure><ol start="2"><li>查询“man”这个关键词的说明文档 -k</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[blackgane@study ~]$ man -k man</span><br><span class="line">fallocate （2） - manipulate file space</span><br><span class="line">zshall （1） - the Z shell meta-man page</span><br><span class="line">....（中间省略）....</span><br><span class="line">yum-config-manager （1） - manage yum configuration options and yum repositories</span><br></pre></td></tr></table></figure><h2 id="info-page"><a href="#info-page" class="headerlink" title="info page"></a>info page</h2><h3 id="数据意义"><a href="#数据意义" class="headerlink" title="数据意义"></a>数据意义</h3><ol><li>File：代表这个info page的数据是来自info.info文件所提供的；</li><li>Node：代表目前的这个页面是属于Top节点。 意思是info.info内含有很多信息，而Top仅是info.info文件内的一个节点内容而已；</li><li>Next：下一个节点的名称为Getting Started，你也可以按“N”到下个节点去；</li><li>Up：回到上一层的节点总揽画面，你也可以按下“U”回到上一层；</li><li>Prev：前一个节点。但由于Top是info.info的第一个节点，所以上面没有前一个节点的信息。</li></ol><h3 id="快捷键-1"><a href="#快捷键-1" class="headerlink" title="快捷键"></a>快捷键</h3><table><thead><tr><th>按键</th><th>进行工作</th></tr></thead><tbody><tr><td>空白键</td><td>向下翻一页</td></tr><tr><td>[Page Down]</td><td>向下翻一页</td></tr><tr><td>[Page Up]</td><td>向上翻一页</td></tr><tr><td>[tab]</td><td>在 node 之间移动，有 node 的地方，通常会以 * 显示。</td></tr><tr><td>[Enter]</td><td>当光标在 node 上面时，按下 Enter 可以进入该 node 。</td></tr><tr><td>b</td><td>移动光标到该 info 画面当中的第一个 node 处</td></tr><tr><td>e</td><td>移动光标到该 info 画面当中的最后一个 node 处</td></tr><tr><td>n</td><td>前往下一个 node 处</td></tr><tr><td>p</td><td>前往上一个 node 处</td></tr><tr><td>u</td><td>向上移动一层</td></tr><tr><td>s（/）</td><td>在 info page 当中进行搜寻</td></tr><tr><td>h, ?</td><td>显示求助菜单</td></tr><tr><td>q</td><td>结束这次的 info page</td></tr></tbody></table><h2 id="其他有用的文件"><a href="#其他有用的文件" class="headerlink" title="其他有用的文件"></a>其他有用的文件</h2><blockquote><p>很多原版软件释出的时候，都会有一些安装须知、预计工作事项、未来工作规划等等的东西，还有包括可安装的程序等， 这些文件也都放置在 /usr/share/doc 当中</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ManPage </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>安装CentOS7</title>
+      <link href="/2020/09/09/%E5%AE%89%E8%A3%85CentOS7/"/>
+      <url>/2020/09/09/%E5%AE%89%E8%A3%85CentOS7/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>下载链接：<a href="http://vault.centos.org/7.1.1503/isos/x86_64/">http://vault.centos.org/7.1.1503/isos/x86_64/</a></p></blockquote><h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><ol><li>调整开机媒体（BIOS）：务必要使用CD或DVD光盘开机，通常需要调整BIOS；</li><li>选择安装模式与开机：包括图形接口/命令行等，也可加入特殊参数来开机进入安装画面；</li><li>选择语系数据：由于不同地区的键盘按键不同，此时需要调整语系/键盘/鼠标等配备；</li><li>软件选择：需要什么样的软件？全部安装还是默认安装即可？</li><li>磁盘分区：最重要的项目之一了！记得将刚刚的规划单拿出来设置；</li><li>开机管理程序、网络、时区设置与root密码：一些需要的系统基础设置！</li><li>安装后的首次设置：安装完毕后还有一些事项要处理，包括使用者、SELinux与防火墙等！</li></ol><h3 id="加入强制使用-GPT-分区表的安装参数"><a href="#加入强制使用-GPT-分区表的安装参数" class="headerlink" title="加入强制使用 GPT 分区表的安装参数"></a>加入强制使用 GPT 分区表的安装参数</h3><ol><li>使用方向键，将图 3.2.8 的光标移动到“ Install CentOS 7 ”的项目中</li><li>按下键盘的 <code>Tab</code> 按钮，让光标跑到画面最下方等待输入额外的核心参数</li><li>在出现的画面中，输入如下画面的数据 （注意，各个项目要有空格，最后一个是光标本身而非底线）</li></ol><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/blackgane/cdn_article@master/article_cdn/gpt.jpg" alt="加入额外的核心参数修改安装程序"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CentOS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux主机规划与磁盘分区</title>
       <link href="/2020/09/07/Linux%E4%B8%BB%E6%9C%BA%E8%A7%84%E5%88%92%E4%B8%8E%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA/"/>
       <url>/2020/09/07/Linux%E4%B8%BB%E6%9C%BA%E8%A7%84%E5%88%92%E4%B8%8E%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA/</url>
@@ -21,31 +98,6 @@
         <tags>
             
             <tag> 磁盘 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>安装CentOS7</title>
-      <link href="/2020/09/07/%E5%AE%89%E8%A3%85CentOS7/"/>
-      <url>/2020/09/07/%E5%AE%89%E8%A3%85CentOS7/</url>
-      
-        <content type="html"><![CDATA[<blockquote><p>下载链接：<a href="http://vault.centos.org/7.1.1503/isos/x86_64/">http://vault.centos.org/7.1.1503/isos/x86_64/</a></p></blockquote><h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><ol><li>调整开机媒体（BIOS）：务必要使用CD或DVD光盘开机，通常需要调整BIOS；</li><li>选择安装模式与开机：包括图形接口/命令行等，也可加入特殊参数来开机进入安装画面；</li><li>选择语系数据：由于不同地区的键盘按键不同，此时需要调整语系/键盘/鼠标等配备；</li><li>软件选择：需要什么样的软件？全部安装还是默认安装即可？</li><li>磁盘分区：最重要的项目之一了！记得将刚刚的规划单拿出来设置；</li><li>开机管理程序、网络、时区设置与root密码：一些需要的系统基础设置！</li><li>安装后的首次设置：安装完毕后还有一些事项要处理，包括使用者、SELinux与防火墙等！</li></ol><h3 id="加入强制使用-GPT-分区表的安装参数"><a href="#加入强制使用-GPT-分区表的安装参数" class="headerlink" title="加入强制使用 GPT 分区表的安装参数"></a>加入强制使用 GPT 分区表的安装参数</h3><ol><li>使用方向键，将图 3.2.8 的光标移动到“ Install CentOS 7 ”的项目中</li><li>按下键盘的 <code>Tab</code> 按钮，让光标跑到画面最下方等待输入额外的核心参数</li><li>在出现的画面中，输入如下画面的数据 （注意，各个项目要有空格，最后一个是光标本身而非底线）</li></ol><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/blackgane/cdn_article@master/article_cdn/gpt.jpg" alt="加入额外的核心参数修改安装程序"></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Linux </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> CentOS </tag>
             
         </tags>
       
