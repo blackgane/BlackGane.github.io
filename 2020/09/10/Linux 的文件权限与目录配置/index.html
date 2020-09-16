@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Linux 的文件权限与目录配置 | 酒酿爹の小站</title><meta name="description" content="鸟哥Linux私房菜第四版"><meta name="keywords" content="文件权限,目录配置"><meta name="author" content="酒酿爹"><meta name="copyright" content="酒酿爹"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/blackgane/cdn-wallpaper-minimalist@master/favicon/favicon-stand-westies.ico"><link rel="canonical" href="https://blackgane.com/2020/09/10/Linux%20%E7%9A%84%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E4%B8%8E%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="Linux 的文件权限与目录配置"><meta property="og:url" content="https://blackgane.com/2020/09/10/Linux%20%E7%9A%84%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E4%B8%8E%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE/"><meta property="og:site_name" content="酒酿爹の小站"><meta property="og:description" content="鸟哥Linux私房菜第四版"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/blackgane/cdn-wallpaper-minimalist@master/volleyball/741752.png"><meta property="article:published_time" content="2020-09-10T03:43:40.000Z"><meta property="article:modified_time" content="2020-09-10T10:01:48.464Z"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Linux 的文件权限与目录配置 | 酒酿爹の小站</title><meta name="description" content="鸟哥Linux私房菜第四版"><meta name="keywords" content="文件权限,目录配置"><meta name="author" content="酒酿爹"><meta name="copyright" content="酒酿爹"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/blackgane/cdn-wallpaper-minimalist@master/favicon/favicon-stand-westies.ico"><link rel="canonical" href="https://blackgane.com/2020/09/10/Linux%20%E7%9A%84%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E4%B8%8E%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="Linux 的文件权限与目录配置"><meta property="og:url" content="https://blackgane.com/2020/09/10/Linux%20%E7%9A%84%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E4%B8%8E%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE/"><meta property="og:site_name" content="酒酿爹の小站"><meta property="og:description" content="鸟哥Linux私房菜第四版"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/blackgane/cdn-wallpaper-minimalist@master/volleyball/741752.png"><meta property="article:published_time" content="2020-09-10T03:43:40.000Z"><meta property="article:modified_time" content="2020-09-16T09:03:30.984Z"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
   root: '/',
   hexoversion: '5.1.1',
   algolia: undefined,
@@ -63,7 +63,7 @@ var saveToLocal = {
   isHome: false,
   isHighlightShrink: false,
   isSidebar: true,
-  postUpdate: '2020-09-10 18:01:48'
+  postUpdate: '2020-09-16 17:03:30'
 }</script><noscript><style type="text/css">
 #nav {
   opacity: 1
@@ -118,17 +118,17 @@ if (autoChangeMode === '1') {
 } else {
   if (t === 'dark') activateDarkMode()
   else if (t === 'light') activateLightMode()
-}</script><meta name="generator" content="Hexo 5.1.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="https://cdn.jsdelivr.net/gh/blackgane/cdn-wallpaper-minimalist@master/Avatar/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">11</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">14</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/gallery"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/tools"><i class="fa-fw fas fa-toolbox"></i><span> 工具</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E8%80%85%E4%B8%8E%E7%BE%A4%E7%BB%84"><span class="toc-number">1.</span> <span class="toc-text">使用者与群组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%8B%A5%E6%9C%89%E8%80%85"><span class="toc-number">1.1.</span> <span class="toc-text">文件拥有者</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BE%A4%E7%BB%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.2.</span> <span class="toc-text">群组概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E4%BA%BA"><span class="toc-number">1.3.</span> <span class="toc-text">其他人</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux-%E4%BD%BF%E7%94%A8%E8%80%85%E8%BA%AB%E4%BB%BD%E4%B8%8E%E7%BE%A4%E7%BB%84%E8%AE%B0%E5%BD%95%E7%9A%84%E6%96%87%E4%BB%B6"><span class="toc-number">1.4.</span> <span class="toc-text">Linux 使用者身份与群组记录的文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux-%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E6%A6%82%E5%BF%B5"><span class="toc-number">2.</span> <span class="toc-text">Linux 文件权限概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7"><span class="toc-number">2.1.</span> <span class="toc-text">Linux文件属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%94%B9%E5%8F%98%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7%E4%B8%8E%E6%9D%83%E9%99%90"><span class="toc-number">2.2.</span> <span class="toc-text">如何改变文件属性与权限</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%B9%E5%8F%98%E6%89%80%E5%B1%9E%E7%BE%A4%E7%BB%84-chgrp"><span class="toc-number">2.2.1.</span> <span class="toc-text">改变所属群组, chgrp</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%B9%E5%8F%98%E6%96%87%E4%BB%B6%E6%8B%A5%E6%9C%89%E8%80%85-chown"><span class="toc-number">2.2.2.</span> <span class="toc-text">改变文件拥有者, chown</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%B9%E5%8F%98%E6%9D%83%E9%99%90-chmod"><span class="toc-number">2.2.3.</span> <span class="toc-text">改变权限, chmod</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E4%B8%8E%E6%96%87%E4%BB%B6%E4%B9%8B%E6%9D%83%E9%99%90%E6%84%8F%E4%B9%89"><span class="toc-number">2.3.</span> <span class="toc-text">目录与文件之权限意义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E6%96%87%E4%BB%B6%E7%A7%8D%E7%B1%BB%E4%B8%8E%E6%89%A9%E5%B1%95%E5%90%8D"><span class="toc-number">2.4.</span> <span class="toc-text">Linux文件种类与扩展名</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">Linux目录配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE%E7%9A%84%E4%BE%9D%E6%8D%AE%E2%80%93FHS"><span class="toc-number">3.1.</span> <span class="toc-text">Linux目录配置的依据–FHS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B9%E7%9B%AE%E5%BD%95-%EF%BC%88-%EF%BC%89-%E7%9A%84%E6%84%8F%E4%B9%89%E4%B8%8E%E5%86%85%E5%AE%B9"><span class="toc-number">3.1.1.</span> <span class="toc-text">根目录 （&#x2F;） 的意义与内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#usr-%E7%9A%84%E6%84%8F%E4%B9%89%E4%B8%8E%E5%86%85%E5%AE%B9"><span class="toc-number">3.1.2.</span> <span class="toc-text">&#x2F;usr 的意义与内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#var-%E7%9A%84%E6%84%8F%E4%B9%89%E4%B8%8E%E5%86%85%E5%AE%B9"><span class="toc-number">3.1.3.</span> <span class="toc-text">&#x2F;var 的意义与内容</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E6%A0%91%EF%BC%88directory-tree%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">目录树（directory tree）</span></a></li></ol></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/blackgane/cdn-wallpaper-minimalist@master/volleyball/741752.png)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">酒酿爹の小站</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/gallery"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/tools"><i class="fa-fw fas fa-toolbox"></i><span> 工具</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">Linux 的文件权限与目录配置</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-09-10T03:43:40.000Z" title="发表于 2020-09-10 11:43:40">2020-09-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-09-10T10:01:48.464Z" title="更新于 2020-09-10 18:01:48">2020-09-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/">Linux</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><blockquote>
+}</script><meta name="generator" content="Hexo 5.1.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="https://cdn.jsdelivr.net/gh/blackgane/cdn-wallpaper-minimalist@master/Avatar/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">11</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">14</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/gallery"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/tools"><i class="fa-fw fas fa-toolbox"></i><span> 工具</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E8%80%85%E4%B8%8E%E7%BE%A4%E7%BB%84"><span class="toc-number">1.</span> <span class="toc-text">使用者与群组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%8B%A5%E6%9C%89%E8%80%85"><span class="toc-number">1.1.</span> <span class="toc-text">文件拥有者</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BE%A4%E7%BB%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.2.</span> <span class="toc-text">群组概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E4%BA%BA"><span class="toc-number">1.3.</span> <span class="toc-text">其他人</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux-%E4%BD%BF%E7%94%A8%E8%80%85%E8%BA%AB%E4%BB%BD%E4%B8%8E%E7%BE%A4%E7%BB%84%E8%AE%B0%E5%BD%95%E7%9A%84%E6%96%87%E4%BB%B6"><span class="toc-number">1.4.</span> <span class="toc-text">Linux 使用者身份与群组记录的文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux-%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E6%A6%82%E5%BF%B5"><span class="toc-number">2.</span> <span class="toc-text">Linux 文件权限概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7"><span class="toc-number">2.1.</span> <span class="toc-text">Linux文件属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%94%B9%E5%8F%98%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7%E4%B8%8E%E6%9D%83%E9%99%90"><span class="toc-number">2.2.</span> <span class="toc-text">如何改变文件属性与权限</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%B9%E5%8F%98%E6%89%80%E5%B1%9E%E7%BE%A4%E7%BB%84-chgrp"><span class="toc-number">2.2.1.</span> <span class="toc-text">改变所属群组, chgrp</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%B9%E5%8F%98%E6%96%87%E4%BB%B6%E6%8B%A5%E6%9C%89%E8%80%85-chown"><span class="toc-number">2.2.2.</span> <span class="toc-text">改变文件拥有者, chown</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%B9%E5%8F%98%E6%9D%83%E9%99%90-chmod"><span class="toc-number">2.2.3.</span> <span class="toc-text">改变权限, chmod</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E4%B8%8E%E6%96%87%E4%BB%B6%E4%B9%8B%E6%9D%83%E9%99%90%E6%84%8F%E4%B9%89"><span class="toc-number">2.3.</span> <span class="toc-text">目录与文件之权限意义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E6%96%87%E4%BB%B6%E7%A7%8D%E7%B1%BB%E4%B8%8E%E6%89%A9%E5%B1%95%E5%90%8D"><span class="toc-number">2.4.</span> <span class="toc-text">Linux文件种类与扩展名</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">Linux目录配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE%E7%9A%84%E4%BE%9D%E6%8D%AE%E2%80%93FHS"><span class="toc-number">3.1.</span> <span class="toc-text">Linux目录配置的依据–FHS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B9%E7%9B%AE%E5%BD%95-%EF%BC%88-%EF%BC%89-%E7%9A%84%E6%84%8F%E4%B9%89%E4%B8%8E%E5%86%85%E5%AE%B9"><span class="toc-number">3.1.1.</span> <span class="toc-text">根目录 （&#x2F;） 的意义与内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#usr-%E7%9A%84%E6%84%8F%E4%B9%89%E4%B8%8E%E5%86%85%E5%AE%B9"><span class="toc-number">3.1.2.</span> <span class="toc-text">&#x2F;usr 的意义与内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#var-%E7%9A%84%E6%84%8F%E4%B9%89%E4%B8%8E%E5%86%85%E5%AE%B9"><span class="toc-number">3.1.3.</span> <span class="toc-text">&#x2F;var 的意义与内容</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E6%A0%91%EF%BC%88directory-tree%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">目录树（directory tree）</span></a></li></ol></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/blackgane/cdn-wallpaper-minimalist@master/volleyball/741752.png)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">酒酿爹の小站</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/gallery"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/tools"><i class="fa-fw fas fa-toolbox"></i><span> 工具</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">Linux 的文件权限与目录配置</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-09-10T03:43:40.000Z" title="发表于 2020-09-10 11:43:40">2020-09-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-09-16T09:03:30.984Z" title="更新于 2020-09-16 17:03:30">2020-09-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/">Linux</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><blockquote>
 <p>Linux一般将文件可存取的身份分为三个类别，分别是 owner/group/others，且三种身份各有 read/write/execute 等权限。</p>
 </blockquote>
-<h2 id="使用者与群组"><a href="#使用者与群组" class="headerlink" title="使用者与群组"></a>使用者与群组</h2><h3 id="文件拥有者"><a href="#文件拥有者" class="headerlink" title="文件拥有者"></a>文件拥有者</h3><p>由于Linux是个多用户多任务的系统, 所以可以设置为只文件拥有者才可查看或修改，其他人无法查看修改</p>
-<h3 id="群组概念"><a href="#群组概念" class="headerlink" title="群组概念"></a>群组概念</h3><p>以团队形式来共享，分割可查看，修改的权限。</p>
+<h2 id="使用者与群组"><a href="#使用者与群组" class="headerlink" title="使用者与群组"></a>使用者与群组</h2><h3 id="文件拥有者"><a href="#文件拥有者" class="headerlink" title="文件拥有者"></a>文件拥有者</h3><p>由于Linux是个多用户多任务的系统, 所以可以设置为只有文件拥有者才可查看或修改，其他人无法查看修改</p>
+<h3 id="群组概念"><a href="#群组概念" class="headerlink" title="群组概念"></a>群组概念</h3><p>以团队形式来共享，分隔可查看，修改的权限。</p>
 <h3 id="其他人"><a href="#其他人" class="headerlink" title="其他人"></a>其他人</h3><p>既不是文件拥有者，又不是群组里的人，root除外。</p>
 <h3 id="Linux-使用者身份与群组记录的文件"><a href="#Linux-使用者身份与群组记录的文件" class="headerlink" title="Linux 使用者身份与群组记录的文件"></a>Linux 使用者身份与群组记录的文件</h3><p>默认的情况下：</p>
 <ol>
-<li>所有的系统上的帐号与一般身份使用者，还有root， 记录在 /etc/passwd</li>
-<li>个人的密码则是记录在 /etc/shadow </li>
-<li>Linux所有的群组名称都纪录在 /etc/group</li>
+<li>所有的系统上的帐号与一般身份使用者，还有root， 记录在 <code>/etc/passwd</code></li>
+<li>个人的密码则是记录在 <code>/etc/shadow</code> </li>
+<li>Linux所有的群组名称都纪录在 <code>/etc/group</code></li>
 </ol>
 <h2 id="Linux-文件权限概念"><a href="#Linux-文件权限概念" class="headerlink" title="Linux 文件权限概念"></a>Linux 文件权限概念</h2><h3 id="Linux文件属性"><a href="#Linux文件属性" class="headerlink" title="Linux文件属性"></a>Linux文件属性</h3><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/blackgane/cdn_article@master/article_cdn/ls.jpg" alt="ls -al"></p>
 <ol>
@@ -137,17 +137,17 @@ if (autoChangeMode === '1') {
 <ol>
 <li><p>第一个字符代表这个文件是“目录、文件或链接文件等等”：</p>
 <ul>
-<li>当为[ d ]则是目录，例如上表文件名为“.config”的那一行；</li>
-<li>当为[ - ]则是文件，例如上表文件名为“initial-setup-ks.cfg”那一行；</li>
-<li>若是[ l ]则表示为链接文件（link file）；</li>
-<li>若是[ b ]则表示为设备文件里面的可供储存的周边设备（可随机存取设备）；</li>
-<li>若是[ c ]则表示为设备文件里面的序列埠设备，例如键盘、鼠标（一次性读取设备）。</li>
+<li>当为<code>d</code>则是目录，例如上表文件名为“.config”的那一行；</li>
+<li>当为<code>-</code>则是文件，例如上表文件名为“initial-setup-ks.cfg”那一行；</li>
+<li>若是<code>l</code>则表示为链接文件（link file）；</li>
+<li>若是<code>b</code>则表示为设备文件里面的可供储存的周边设备（可随机存取设备）；</li>
+<li>若是<code>c</code>则表示为设备文件里面的序列埠设备，例如键盘、鼠标（一次性读取设备）。</li>
 </ul>
 </li>
 <li><p>接下来的字符中，以三个为一组，且均为“rwx” 的三个参数的组合。</p>
 <ul>
-<li>[ r ]代表可读（read）、[ w ]代表可写（write）、[ x ]代表可执行（execute）</li>
-<li>要注意的是，这三个权限的位置不会改变，如果没有权限，就会出现减号[ - ]而已。</li>
+<li><code>r</code>代表可读（read）、<code>w</code>代表可写（write）、<code>x</code>代表可执行（execute）</li>
+<li>要注意的是，这三个权限的位置不会改变，如果没有权限，就会出现减号<code>-</code>而已。</li>
 <li>第一组为“文件拥有者可具备的权限”，以“initial-setup-ks.cfg”那个文件为例， 该文件的拥有者可以读写，但不可执行；</li>
 <li>第二组为“加入此群组之帐号的权限”；</li>
 <li>第三组为“非本人且没有加入本群组之其他帐号的权限”。</li>
@@ -171,34 +171,34 @@ if (autoChangeMode === '1') {
 <h3 id="如何改变文件属性与权限"><a href="#如何改变文件属性与权限" class="headerlink" title="如何改变文件属性与权限"></a>如何改变文件属性与权限</h3><ul>
 <li>chgrp ：改变文件所属群组</li>
 <li>chown ：改变文件拥有者</li>
-<li>chmod ：改变文件的权限, SUID, SGID, SBIT等等的特性</li>
+<li>chmod ：改变文件的权限, <code>SUID, SGID, SBIT</code>等等的特性</li>
 </ul>
 <h4 id="改变所属群组-chgrp"><a href="#改变所属群组-chgrp" class="headerlink" title="改变所属群组, chgrp"></a>改变所属群组, chgrp</h4><ul>
-<li>被改变的群组名称必须要在/etc/group文件内存在才行，否则就会显示错误</li>
+<li>被改变的群组名称必须要在<code>/etc/group</code>文件内存在才行，否则就会显示错误</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@study ~]<span class="comment"># chgrp [-R] dirname/filename ...</span></span><br><span class="line">选项与参数：</span><br><span class="line">-R : 进行递回（recursive）的持续变更，亦即连同次目录下的所有文件、目录</span><br><span class="line">都更新成为这个群组之意。常常用在变更某一目录内所有的文件之情况。</span><br><span class="line">范例：</span><br><span class="line">[root@study ~]<span class="comment"># chgrp users initial-setup-ks.cfg</span></span><br><span class="line">[root@study ~]<span class="comment"># ls -l</span></span><br><span class="line">-rw-r--r--. 1 root users 1864 May 4 18:01 initial-setup-ks.cfg</span><br><span class="line">[root@study ~]<span class="comment"># chgrp testing initial-setup-ks.cfg</span></span><br><span class="line">chgrp: invalid group: testing</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@study ~]$ chgrp [-R] dirname/filename ...</span><br><span class="line">选项与参数：</span><br><span class="line">-R : 进行递回（recursive）的持续变更，亦即连同次目录下的所有文件、目录</span><br><span class="line">都更新成为这个群组之意。常常用在变更某一目录内所有的文件之情况。</span><br><span class="line">范例：</span><br><span class="line">[root@study ~]$ chgrp users initial-setup-ks.cfg</span><br><span class="line">[root@study ~]$ ls -l</span><br><span class="line">-rw-r--r--. 1 root users 1864 May 4 18:01 initial-setup-ks.cfg</span><br><span class="line">[root@study ~]$ chgrp testing initial-setup-ks.cfg</span><br><span class="line">chgrp: invalid group: testing</span><br></pre></td></tr></table></figure>
 
 <h4 id="改变文件拥有者-chown"><a href="#改变文件拥有者-chown" class="headerlink" title="改变文件拥有者, chown"></a>改变文件拥有者, chown</h4><ul>
-<li>在/etc/passwd 这个文件中有纪录的使用者名称才能改变</li>
+<li>在<code>/etc/passwd</code>这个文件中有纪录的使用者名称才能改变</li>
 <li>可以顺便直接修改群组的名称<code>chown [-R] 帐号名称:群组名称 文件或目录</code></li>
-<li><code>:</code> 可以用 <code>.</code> 替换推荐 <code>:</code></li>
-<li>chown也能单纯的修改所属群组呢！ 例如“chown .sshd initial-setup-ks.cfg”就是修改群组，就是那个小数点的用途！</li>
+<li><code>:</code> 可以用 <code>.</code> 替换, 推荐 <code>:</code></li>
+<li>chown也能单纯的修改所属群组呢！ 例如<code>chown .sshd initial-setup-ks.cfg</code>就是修改群组，就是那个小数点的用途！</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@study ~]<span class="comment"># chown [-R] 帐号名称 文件或目录</span></span><br><span class="line">[root@study ~]<span class="comment"># chown [-R] 帐号名称:群组名称 文件或目录</span></span><br><span class="line">选项与参数：</span><br><span class="line">-R : 进行递回（recursive）的持续变更，亦即连同次目录下的所有文件都变更</span><br><span class="line">范例：将 initial-setup-ks.cfg 的拥有者改为bin这个帐号：</span><br><span class="line">[root@study ~]<span class="comment"># chown bin initial-setup-ks.cfg</span></span><br><span class="line">[root@study ~]<span class="comment"># ls -l</span></span><br><span class="line">-rw-r--r--. 1 bin users 1864 May 4 18:01 initial-setup-ks.cfg</span><br><span class="line">范例：将 initial-setup-ks.cfg 的拥有者与群组改回为root：</span><br><span class="line">[root@study ~]<span class="comment"># chown root:root initial-setup-ks.cfg</span></span><br><span class="line">[root@study ~]<span class="comment"># ls -l</span></span><br><span class="line">-rw-r--r--. 1 root root 1864 May 4 18:01 initial-setup-ks.cfg</span><br></pre></td></tr></table></figure>
 
 <h4 id="改变权限-chmod"><a href="#改变权限-chmod" class="headerlink" title="改变权限, chmod"></a>改变权限, chmod</h4><ol>
 <li><p>数字类型改变文件权限</p>
 <blockquote>
-<p>r, w, x 分别对应数字 4, 2, 1</p>
+<p><code>r, w, x</code> 分别对应数字 4, 2, 1</p>
 </blockquote>
-<p> 每种身份（owner/group/others）各自的三个权限（r/w/x）分数是需要累加的，例如当权限为： [-rwxrwx—] 分数则是：</p>
+<p> 每种身份（owner/group/others）各自的三个权限（r/w/x）分数是需要累加的，例如当权限为：<code>-rwxrwx---</code> 分数则是：</p>
 <blockquote>
-<p>owner = rwx = 4+2+1 = 7 &gt; group = rwx = 4+2+1 = 7 &gt; others= — = 0+0+0 = 0  即该文件权限为770</p>
+<p><code>owner = rwx = 4+2+1 = 7 &gt; group = rwx = 4+2+1 = 7 &gt; others= --- = 0+0+0 = 0</code>  即该文件权限为770</p>
 </blockquote>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@study ~]<span class="comment"># chmod [-R] xyz 文件或目录</span></span><br><span class="line">选项与参数：</span><br><span class="line">xyz : 就是刚刚提到的数字类型的权限属性，为 rwx 属性数值的相加。</span><br><span class="line">-R : 进行递回（recursive）的持续变更，亦即连同次目录下的所有文件都会变更</span><br></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@study ~]$ chmod [-R] xyz 文件或目录</span><br><span class="line">选项与参数：</span><br><span class="line">xyz : 就是刚刚提到的数字类型的权限属性，为 rwx 属性数值的相加。</span><br><span class="line">-R : 进行递回（recursive）的持续变更，亦即连同次目录下的所有文件都会变更</span><br></pre></td></tr></table></figure>
 <ul>
-<li>vim编辑后的文件默认是664 —— -rw-rw-r–</li>
-<li>需要变成可执行文件是755 —— -rwxr-xr-x</li>
+<li>vim编辑后的文件默认是664 —— <code>-rw-rw-r--</code></li>
+<li>需要变成可执行文件是755 —— <code>-rwxr-xr-x</code></li>
 </ul>
 </li>
 <li><p>符号类型改变文件权限</p>
@@ -241,40 +241,40 @@ if (autoChangeMode === '1') {
 </thead>
 <tbody><tr>
 <td>正规文件（regular file）</td>
-<td>第一个属性为 [ - ]</td>
+<td>第一个属性为 <code>-</code></td>
 <td>纯文本文件（ASCII）<br>二进制档（binary）<br>数据格式文件（data）</td>
 </tr>
 <tr>
 <td>目录（directory）</td>
-<td>第一个属性为 [ d ]</td>
+<td>第一个属性为 <code>d</code></td>
 <td>如 [drwxrwxrwx]</td>
 </tr>
 <tr>
 <td>链接文件（link）</td>
-<td>第一个属性为 [ l ]</td>
+<td>第一个属性为 <code>l</code></td>
 <td>类似Windows中的快捷方式</td>
 </tr>
 <tr>
 <td>设备与设备文件（device）</td>
-<td>第一个属性为[ b ]<br>第一个属性为[ c ]</td>
+<td>第一个属性为<code>b</code><br>第一个属性为<code>c</code></td>
 <td>区块（block）设备文件 储存设备<br>字符（character）设备文件 外设</td>
 </tr>
 <tr>
 <td>数据接口文件（sockets）</td>
-<td>第一个属性为 [ s ]</td>
+<td>第一个属性为 <code>s</code></td>
 <td>最常在/run或/tmp这些个目录中看到这种文件类型</td>
 </tr>
 <tr>
 <td>数据输送档（FIFO, pipe）</td>
-<td>第一个属性为[p]</td>
+<td>第一个属性为<code>p</code></td>
 <td>目的在解决多个程序同时存取一个文件所造成的错误问题</td>
 </tr>
 </tbody></table>
 <h2 id="Linux目录配置"><a href="#Linux目录配置" class="headerlink" title="Linux目录配置"></a>Linux目录配置</h2><h3 id="Linux目录配置的依据–FHS"><a href="#Linux目录配置的依据–FHS" class="headerlink" title="Linux目录配置的依据–FHS"></a>Linux目录配置的依据–FHS</h3><p>Filesystem Hierarchy Standard （FHS）标准</p>
 <ul>
-<li>/ （root, 根目录）：与开机系统有关；</li>
-<li>/usr （unix software resource）：与软件安装/执行有关；</li>
-<li>/var （variable）：与系统运行过程有关。</li>
+<li><code>/</code> （root, 根目录）：与开机系统有关；</li>
+<li><code>/usr</code> （unix software resource）：与软件安装/执行有关；</li>
+<li><code>/var</code> （variable）：与系统运行过程有关。</li>
 </ul>
 <h4 id="根目录-（-）-的意义与内容"><a href="#根目录-（-）-的意义与内容" class="headerlink" title="根目录 （/） 的意义与内容"></a>根目录 （/） 的意义与内容</h4><table>
 <thead>
@@ -286,23 +286,23 @@ if (autoChangeMode === '1') {
 </thead>
 <tbody><tr>
 <td>不变的（static）</td>
-<td>/usr （软件放置处）</td>
-<td>/etc （配置文件）</td>
+<td><code>/usr</code> （软件放置处）</td>
+<td><code>/etc</code> （配置文件）</td>
 </tr>
 <tr>
 <td></td>
-<td>/opt （第三方协力软件）</td>
-<td>/boot （开机与核心档）</td>
+<td><code>/opt</code> （第三方协力软件）</td>
+<td><code>/boot</code> （开机与核心档）</td>
 </tr>
 <tr>
 <td>可变动的（variable）</td>
-<td>/var/mail （使用者邮件信箱）</td>
-<td>/var/run （程序关）</td>
+<td><code>/var/mail</code> （使用者邮件信箱）</td>
+<td><code>/var/run</code> （程序关）</td>
 </tr>
 <tr>
 <td></td>
-<td>/var/spool/news （新闻群组）</td>
-<td>/var/lock （程序相关）</td>
+<td><code>/var/spool/news</code> （新闻群组）</td>
+<td><code>/var/lock</code> （程序相关）</td>
 </tr>
 </tbody></table>
 <blockquote>
@@ -324,7 +324,7 @@ if (autoChangeMode === '1') {
 </tr>
 <tr>
 <td>/proc</td>
-<td>这个目录本身是一个“虚拟文件系统（virtual filesystem）”喔！他放置的数据都是在内存当中， 例如系统核心、行程信息（process）、周边设备的状态及网络状态等等。因为这个目录下的数据都是在内存当中， 所以本身不占任何硬盘空间啊！比较重要的文件例如：/proc/cpuinfo, /proc/dma,/proc/interrupts, /proc/ioports, /proc/net/* 等等。</td>
+<td>这个目录本身是一个“虚拟文件系统（virtual filesystem）”喔！他放置的数据都是在内存当中， 例如系统核心、行程信息（process）、周边设备的状态及网络状态等等。因为这个目录下的数据都是在内存当中， 所以本身不占任何硬盘空间啊！比较重要的文件例如：<code>/proc/cpuinfo</code>, <code>/proc/dma</code>,<code>/proc/interrupts</code>,<code> /proc/ioports</code>, <code>/proc/net/*</code> 等等。</td>
 </tr>
 <tr>
 <td>/sys</td>
