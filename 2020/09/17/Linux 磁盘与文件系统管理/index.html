@@ -1,0 +1,256 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Linux 磁盘与文件系统管理 | 酒酿爹の小站</title><meta name="description" content="鸟哥Linux私房菜第四版"><meta name="keywords" content="磁盘,文件系统管理"><meta name="author" content="酒酿爹"><meta name="copyright" content="酒酿爹"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/blackgane/cdn-wallpaper-minimalist@master/favicon/favicon-stand-westies.ico"><link rel="canonical" href="https://blackgane.com/2020/09/17/Linux%20%E7%A3%81%E7%9B%98%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="Linux 磁盘与文件系统管理"><meta property="og:url" content="https://blackgane.com/2020/09/17/Linux%20%E7%A3%81%E7%9B%98%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86/"><meta property="og:site_name" content="酒酿爹の小站"><meta property="og:description" content="鸟哥Linux私房菜第四版"><meta property="og:image" content="https://i.loli.net/2020/09/17/dSIDACvohncsrWy.png"><meta property="article:published_time" content="2020-09-17T07:37:45.000Z"><meta property="article:modified_time" content="2020-09-17T10:12:26.367Z"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.1.1',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime: '天',
+  date_suffix: undefined,
+  copyright: undefined,
+  ClickShowText: {"text":"小仙女,酒酿,撸码","fontSize":"15px"},
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+      const now = new Date()
+      const expiryDay = ttl * 86400000
+      const item = {
+        value: value,
+        expiry: now.getTime() + expiryDay,
+      }
+      localStorage.setItem(key, JSON.stringify(item))
+    },
+  
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2020-09-17 18:12:26'
+}</script><noscript><style type="text/css">
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+  }
+}
+
+var autoChangeMode = 'false'
+var t = saveToLocal.get('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (saveToLocal.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><meta name="generator" content="Hexo 5.1.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="https://cdn.jsdelivr.net/gh/blackgane/cdn-wallpaper-minimalist@master/Avatar/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">12</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">15</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/gallery"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/tools"><i class="fa-fw fas fa-toolbox"></i><span> 工具</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A4%E8%AF%86-Linux-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.</span> <span class="toc-text">认识 Linux 文件系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%89%B9%E6%80%A7"><span class="toc-number">1.1.</span> <span class="toc-text">文件系统特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux-%E7%9A%84-EXT2-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%EF%BC%88inode%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">Linux 的 EXT2 文件系统（inode）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8E%E7%9B%AE%E5%BD%95%E6%A0%91%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">1.3.</span> <span class="toc-text">与目录树的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">1.3.1.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6"><span class="toc-number">1.3.2.</span> <span class="toc-text">文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E6%A0%91%E8%AF%BB%E5%8F%96"><span class="toc-number">1.3.3.</span> <span class="toc-text">目录树读取</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EXT2-EXT3-EXT4-%E6%96%87%E4%BB%B6%E7%9A%84%E5%AD%98%E5%8F%96%E4%B8%8E%E6%97%A5%E5%BF%97%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="toc-number">1.4.</span> <span class="toc-text">EXT2&#x2F;EXT3&#x2F;EXT4 文件的存取与日志式文件系统的功能</span></a></li></ol></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(https://i.loli.net/2020/09/17/dSIDACvohncsrWy.png)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">酒酿爹の小站</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/gallery"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/tools"><i class="fa-fw fas fa-toolbox"></i><span> 工具</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">Linux 磁盘与文件系统管理</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-09-17T07:37:45.000Z" title="发表于 2020-09-17 15:37:45">2020-09-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-09-17T10:12:26.367Z" title="更新于 2020-09-17 18:12:26">2020-09-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/">Linux</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h2 id="认识-Linux-文件系统"><a href="#认识-Linux-文件系统" class="headerlink" title="认识 Linux 文件系统"></a>认识 Linux 文件系统</h2><h3 id="文件系统特性"><a href="#文件系统特性" class="headerlink" title="文件系统特性"></a>文件系统特性</h3><blockquote>
+<p>例如 Linux 操作系统的文件权限（rwx）与文件属性（拥有者、群组、时间参数等）。 文件系统通常会将这两部份的数据分别存放在不同的区块，权限与属性放置到 inode 中，至于实际数据则放置到 data block 区块中。 另外，还有一个超级区块 （superblock） 会记录整个文件系统的整体信息，包括 inode 与 block 的总量、使用量、剩余量等。</p>
+</blockquote>
+<p>每个 inode 与 block 都有编号，至于这三个数据的意义可以简略说明如下：</p>
+<ul>
+<li><p>superblock：记录此 filesystem 的整体信息，包括inode/block的总量、使用量、剩余量，以及文件系统的格式与相关信息等；</p>
+</li>
+<li><p>inode：记录文件的属性，一个文件占用一个inode，同时记录此文件的数据所在的 block号码；</p>
+</li>
+<li><p>block：实际记录文件的内容，若文件太大时，会占用多个 block 。</p>
+</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2020/09/17/AmEJRXwpNFbxrO9.png" alt="inode/block 数据存取示意图"></p>
+<p>某一个文件的属性与权限数据是放置到 inode 4 号（下图较小方格内），而这个 inode 记录了文件数据的实际放置点为 2, 7, 13, 15 这四个 block 号码</p>
+<p>这种数据存取的方法我们称为索引式文件系统（indexed allocation）</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2020/09/17/Rxio5SeFJg7TBHQ.png" alt="FAT文件系统数据存取示意图"></p>
+<p>文件的数据依序写入1-&gt;7-&gt;4-&gt;15号这四个 block 号码中， 但这个文件系统没<br>有办法一口气就知道四个 block 的号码，他得要一个一个的将 block 读出后，才会知道下一个block 在何处。 如果同一个文件数据写入的 block 分散的太过厉害时，则我们的磁头将无法在磁盘转一圈就读到所有的数据， 因此磁盘就会多转好几圈才能完整的读取到这个文件的内容！</p>
+<h3 id="Linux-的-EXT2-文件系统（inode）"><a href="#Linux-的-EXT2-文件系统（inode）" class="headerlink" title="Linux 的 EXT2 文件系统（inode）"></a>Linux 的 EXT2 文件系统（inode）</h3><p>Ext2 文件系统在格式化的时候基本上是区分为多个区块群组 （block group） 的，每个区块群组都有独立的 inode/block/superblock 系统。</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2020/09/17/wMy9gu8zfdFAjEk.png" alt="ext2文件系统示意图"></p>
+<ul>
+<li>文件系统最前面有一个开机扇区（boot sector），这个开机扇区可以安装开机管理程序</li>
+</ul>
+<p>每一个区块群组（block group）的六个主要内容：</p>
+<ul>
+<li><p>data block （数据区块）</p>
+<p>  data block 是用来放置文件内容数据地方。</p>
+<table>
+<thead>
+<tr>
+<th>Block</th>
+<th>大小1KB</th>
+<th>2KB</th>
+<th>4KB</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>最大单一文件限制</td>
+<td>16GB</td>
+<td>256GB</td>
+<td>2TB</td>
+</tr>
+<tr>
+<td>最大文件系统总容量</td>
+<td>2TB</td>
+<td>8TB</td>
+<td>16TB</td>
+</tr>
+</tbody></table>
+<p>  Ext2 文件系统的 block 基本限制如下：</p>
+<ul>
+<li>原则上，block 的大小与数量在格式化完就不能够再改变了（除非重新格式化）；</li>
+<li>每个 block 内最多只能够放置一个文件的数据；</li>
+<li>承上，如果文件大于 block 的大小，则一个文件会占用多个 block 数量；</li>
+<li>承上，<strong>若文件小于 block ，则该 block 的剩余容量就不能够再被使用了（磁盘空间会浪费）。</strong></li>
+</ul>
+</li>
+<li><p>inode table （inode 表格）</p>
+<p>  inode 是记录文件的属性以及该文件实际数据是放置在哪几个 block。</p>
+<ul>
+<li><p>该文件的存取模式（read/write/excute）；</p>
+</li>
+<li><p>该文件的拥有者与群组（owner/group）；</p>
+</li>
+<li><p>该文件的容量；</p>
+</li>
+<li><p>该文件创建或状态改变的时间（ctime）；</p>
+</li>
+<li><p>最近一次的读取时间（atime）；</p>
+</li>
+<li><p>最近修改的时间（mtime）；</p>
+</li>
+<li><p>定义文件特性的旗标（flag），如 SetUID…；</p>
+</li>
+<li><p>该文件真正内容的指向 （pointer）；</p>
+<p>其他特点：</p>
+</li>
+<li><p>每个 inode 大小均固定为 128 Bytes （新的 ext4 与 xfs 可设置到 256 Bytes）；</p>
+</li>
+<li><p>每个文件都仅会占用一个 inode 而已；</p>
+</li>
+<li><p>承上，因此文件系统能够创建的文件数量与 inode 的数量有关；</p>
+</li>
+<li><p>系统读取文件时需要先找到 inode，并分析 inode 所记录的权限与使用者是否符合，若符合才能够开始实际读取 block 的内容。</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2020/09/17/MI9rcETAbgSHy3L.png" alt="inode 结构示意图"></p>
+<p>上图最左边为 inode 本身 （128 Bytes），里面有 12 个直接指向 block 号码的对照，这 12 笔记录就能够直接取得 block 号码啦！ 至于所谓的间接就是再拿一个 block 来当作记录 block 号码的记录区，如果文件太大时， 就会使用间接的 block 来记录号码。</p>
+</li>
+</ul>
+</li>
+<li><p>Superblock （超级区块）</p>
+<p>  Superblock 是记录整个 filesystem 相关信息的地方， 没有 Superblock ，就没有这个filesystem 了</p>
+<p>  记录的信息主要有：</p>
+<ul>
+<li><p>block 与 inode 的总量；</p>
+</li>
+<li><p>未使用与已使用的 inode / block 数量；</p>
+</li>
+<li><p>block 与 inode 的大小 （block 为 1, 2, 4K，inode 为 128Bytes 或 256Bytes）；</p>
+</li>
+<li><p>filesystem 的挂载时间、最近一次写入数据的时间、最近一次检验磁盘 （fsck） 的时间等文件系统的相关信息；</p>
+</li>
+<li><p>一个 valid bit 数值，若此文件系统已被挂载，则 valid bit 为 0 ，若未被挂载，则 valid bit 为 1 。</p>
+<p>此外，每个 block group 都可能含有 superblock。<br>一般除第一个block group会有superblock，后续如果有的话，就是给第一个 block group 内 superblock 的备份，以后可以做恢复使用。</p>
+</li>
+</ul>
+</li>
+<li><p>Filesystem Description（文件系统描述说明）</p>
+<p>  这个区段可以描述每个 block group 的开始与结束的 block 号码，以及说明每个区段（superblock, bitmap, inodemap, data block） 分别介于哪一个 block 号码之间。</p>
+</li>
+<li><p>block bitmap （区块对照表）</p>
+<p>  记录的是使用与未使用的 block 号码</p>
+</li>
+<li><p>inode bitmap （inode 对照表）</p>
+<p>  记录使用与未使用的 inode 号码</p>
+</li>
+<li><p>dumpe2fs： 查询 Ext 家族 superblock 信息的指令</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@study ~]$ dumpe2fs [-bh] 设备文件名</span><br><span class="line">选项与参数：</span><br><span class="line">-b ：列出保留为坏轨的部分（一般用不到吧！？）</span><br><span class="line">-h ：仅列出 superblock 的数据，不会列出其他的区段内容！</span><br></pre></td></tr></table></figure>
+
+<h3 id="与目录树的关系"><a href="#与目录树的关系" class="headerlink" title="与目录树的关系"></a>与目录树的关系</h3><h4 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h4><p>当我们在 Linux 下的文件系统创建一个目录时，文件系统会分配一个 inode 与至少一块 block 给该目录。其中，inode 记录该目录的相关权限与属性，并可记录分配到的那块 block 号码；而 block 则是记录在这个目录下的文件名与该文件名占用的 inode 号码数据。也就是说目录所占用的 block 内容在记录如下的信息：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2020/09/17/ZhOskPA8DruTwUq.png" alt="记载于目录所属的 block 内的文件名与 inode 号码对应示意图"></p>
+<h4 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h4><p>当我们在 Linux 下的 ext2 创建一个一般文件时， ext2 会分配一个 inode 与相对于该文件大小的 block 数量给该文件。例如：假设我的一个 block 为 4 KBytes ，而我要创建一个 100 KBytes 的文件，那么 linux 将分配一个 inode 与 25 个 block 来储存该文件！ 但同时请注意，由于 inode 仅有 12 个直接指向，因此还要多一个 block 来作为区块号码的记录喔！</p>
+<h4 id="目录树读取"><a href="#目录树读取" class="headerlink" title="目录树读取"></a>目录树读取</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@study ~]$ ll -di / /etc /etc/passwd</span><br><span class="line">128 dr-xr-xr-x. 17 root root 4096 May 4 17:56 /</span><br><span class="line">33595521 drwxr-xr-x. 131 root root 8192 Jun 17 00:20 /etc</span><br><span class="line">36628004 -rw-r--r--. 1 root root 2092 Jun 17 00:20 /etc/passwd</span><br></pre></td></tr></table></figure>
+
+<p>该文件的读取流程为:</p>
+<ol>
+<li><code>/</code> 的 inode： 通过挂载点的信息找到 inode 号码为 128 的根目录 inode，且 inode 规范的权限让我们可以读取该 block 的内容（有 r 与 x） ；</li>
+<li><code>/</code> 的 block： 经过上个步骤取得 block 的号码，并找到该内容有 <code>etc/</code> 目录的 inode 号码（33595521）；</li>
+<li><code>etc/</code> 的 inode： 读取 33595521 号 inode 得知 dmtsai 具有 r 与 x 的权限，因此可以读取etc/ 的 block 内容；</li>
+<li><code>etc/</code> 的 block： 经过上个步骤取得 block 号码，并找到该内容有 passwd 文件的 inode 号码 （36628004）；</li>
+<li><code>passwd</code> 的 inode： 读取 36628004 号 inode 得知 dmtsai 具有 r 的权限，因此可以读取 passwd 的 block 内容；</li>
+<li><code>passwd</code> 的 block： 最后将该 block 内容的数据读出来。</li>
+<li>filesystem 大小与磁盘读取性能：如果文件写入的 block 真的分的很散， 此时就会有所谓的文件数据离散的问题发生了。(文件太大)</li>
+</ol>
+<h3 id="EXT2-EXT3-EXT4-文件的存取与日志式文件系统的功能"><a href="#EXT2-EXT3-EXT4-文件的存取与日志式文件系统的功能" class="headerlink" title="EXT2/EXT3/EXT4 文件的存取与日志式文件系统的功能"></a>EXT2/EXT3/EXT4 文件的存取与日志式文件系统的功能</h3></div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">酒酿爹</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blackgane.com/2020/09/17/Linux%20%E7%A3%81%E7%9B%98%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86/">https://blackgane.com/2020/09/17/Linux%20%E7%A3%81%E7%9B%98%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blackgane.com" target="_blank">酒酿爹の小站</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%A3%81%E7%9B%98/">磁盘</a><a class="post-meta__tags" href="/tags/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86/">文件系统管理</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/09/17/dSIDACvohncsrWy.png" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/blackgane/cdn-wallpaper-minimalist@master/qr_code/wechat.png" target="_blank"><img class="post-qr-code-img" data-lazy-src="https://cdn.jsdelivr.net/gh/blackgane/cdn-wallpaper-minimalist@master/qr_code/wechat.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/blackgane/cdn-wallpaper-minimalist@master/qr_code/alipay.png" target="_blank"><img class="post-qr-code-img" data-lazy-src="https://cdn.jsdelivr.net/gh/blackgane/cdn-wallpaper-minimalist@master/qr_code/alipay.png" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2020/09/11/Linux%20%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86/"><img class="next-cover" data-lazy-src="https://i.loli.net/2020/09/11/c3CaDMKf2khj5Bw.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Linux 文件与目录管理</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/09/07/Linux主机规划与磁盘分区/" title="Linux主机规划与磁盘分区"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/blackgane/cdn-wallpaper-minimalist@master/volleyball/808011.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-09-07</div><div class="title">Linux主机规划与磁盘分区</div></div></a></div></div></div></article></main><footer id="footer" style="background-image: url(https://i.loli.net/2020/09/17/dSIDACvohncsrWy.png)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2020 By 酒酿爹</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/js/third-party/ClickShowText.js" async="async"></script></div></body></html>
