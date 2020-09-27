@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>文件与文件系统的压缩,打包与备份</title>
+      <link href="/2020/09/27/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8E%8B%E7%BC%A9,%E6%89%93%E5%8C%85%E4%B8%8E%E5%A4%87%E4%BB%BD/"/>
+      <url>/2020/09/27/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8E%8B%E7%BC%A9,%E6%89%93%E5%8C%85%E4%B8%8E%E5%A4%87%E4%BB%BD/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Linux-系统常见的压缩指令"><a href="#Linux-系统常见的压缩指令" class="headerlink" title="Linux 系统常见的压缩指令"></a>Linux 系统常见的压缩指令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">*.Z compress 程序压缩的文件；</span><br><span class="line">*.zip zip 程序压缩的文件；</span><br><span class="line">*.gz gzip 程序压缩的文件；</span><br><span class="line">*.bz2 bzip2 程序压缩的文件；</span><br><span class="line">*.xz xz 程序压缩的文件；</span><br><span class="line">*.tar tar 程序打包的数据，并没有压缩过；</span><br><span class="line">*.tar.gz tar 程序打包的文件，其中并且经过 gzip 的压缩</span><br><span class="line">*.tar.bz2 tar 程序打包的文件，其中并且经过 bzip2 的压缩</span><br><span class="line">*.tar.xz tar 程序打包的文件，其中并且经过 xz 的压缩</span><br></pre></td></tr></table></figure><h3 id="gzip-zcat-zmore-zless-zgrep"><a href="#gzip-zcat-zmore-zless-zgrep" class="headerlink" title="gzip, zcat/zmore/zless/zgrep"></a>gzip, zcat/zmore/zless/zgrep</h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 压缩 </tag>
+            
+            <tag> 打包 </tag>
+            
+            <tag> 备份 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux 磁盘与文件系统管理</title>
       <link href="/2020/09/17/Linux%20%E7%A3%81%E7%9B%98%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86/"/>
       <url>/2020/09/17/Linux%20%E7%A3%81%E7%9B%98%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86/</url>
